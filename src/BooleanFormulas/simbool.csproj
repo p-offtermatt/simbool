@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>Simbool</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Philip Offtermatt</Authors>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://solutionsdesign.github.io/Algorithmia/</PackageProjectUrl>
+    <PackageTags>Algorithm Data Structure class library graph heap command queue</PackageTags>
+    <PackageLicense>MIT</PackageLicense>
+    <PackageProjectUrl>https://github.com/p-offtermatt/simbool</PackageProjectUrl>
+    <PackageTags>Boolean Formulas Symbolic Manipulation Library DNF CNF NNF</PackageTags>
+  </PropertyGroup>
+
+</Project>
