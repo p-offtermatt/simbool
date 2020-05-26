@@ -76,6 +76,11 @@ namespace BoolForms
             {
                 return newOperands.First();
             }
+            // remove operator with zero operands: Empty conjunction is true
+            else if (newOperands.Count() == 0)
+            {
+                return TRUE;
+            }
             else
             {
                 return new Conjunction(newOperands);

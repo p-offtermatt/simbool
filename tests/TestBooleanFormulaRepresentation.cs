@@ -3,6 +3,7 @@ using Xunit.Extensions;
 using System.Linq;
 using BoolForms;
 using static BoolForms.BooleanExpression;
+using Xunit.Abstractions;
 
 namespace Testing
 {
@@ -401,11 +402,20 @@ namespace Testing
 
     public class TestDNF
     {
+
+        private readonly ITestOutputHelper output;
+
+        public TestDNF(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
         static Literal A = new Literal("A");
         static Literal B = new Literal("B");
         static Literal C = new Literal("C");
         static Literal D = new Literal("D");
         static Literal E = new Literal("E");
+        static Literal F = new Literal("F");
+
 
         Negation Aneg = new Negation(A);
         Negation Bneg = new Negation(B);
@@ -462,6 +472,17 @@ namespace Testing
             Assert.True(expected.Is_DNF());
             Assert.Equal(expected, actual);
 
+        }
+
+        [Fact]
+        public void TestEmptyDisjunction()
+        {
+            BooleanExpression testExpression = ((A | !(B | C)) & ((!D & (A & E)) & !(E | F)));
+            testExpression = testExpression.ToDNF();
+
+            BooleanExpression expected = FALSE;
+
+            Assert.Equal(expected, testExpression);
         }
     }
 

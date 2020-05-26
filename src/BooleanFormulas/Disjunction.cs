@@ -38,7 +38,7 @@ namespace BoolForms
         }
 
         /// <summary>
-        /// Applies all simplifications applicable to Conjunctions:
+        /// Applies all simplifications applicable to Disjunctions:
         /// Associativity/Flattening: A | (B | C) = A | B | C
         /// Idempotence: A|A = A
         /// Annihilation: A|1 = 1
@@ -76,7 +76,11 @@ namespace BoolForms
             {
                 return newOperands.First();
             }
-            else
+            // remove operator with zero operands: Empty disjunction is false
+            else if (newOperands.Count() == 0)
+            {
+                return FALSE;
+            } else
             {
                 return new Disjunction(newOperands);
             }
